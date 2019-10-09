@@ -1,4 +1,4 @@
-package com.taleb.interfacedemo
+package com.taleb.practices
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_ihpone_model_layout.view.*
 
-class MainRecyclerAdapter(private val mainRecyclerList: ArrayList<IphoneModel>,private val delegate: MainRecyclerView): RecyclerView.Adapter<MainRecyclerAdapter.MainRecyclerItemHolder>() {
+class MainRecyclerAdapter(private val mainRecyclerList: ArrayList<IphoneModel>,private val toastInActivity:(String) -> Unit): RecyclerView.Adapter<MainRecyclerAdapter.MainRecyclerItemHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MainRecyclerItemHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_ihpone_model_layout,p0,false)
@@ -26,7 +26,7 @@ class MainRecyclerAdapter(private val mainRecyclerList: ArrayList<IphoneModel>,p
             itemView.iphoneModel.text = iphoneModel.name
             itemView.iphonePrice.text = "$${iphoneModel.price}"
             itemView.setOnClickListener {
-                delegate.onItemClicked(iphoneModel.name)
+                toastInActivity(iphoneModel.name)
             }
         }
     }

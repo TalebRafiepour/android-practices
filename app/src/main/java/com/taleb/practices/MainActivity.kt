@@ -1,4 +1,4 @@
-package com.taleb.interfacedemo
+package com.taleb.practices
 
 import android.os.Bundle
 import android.widget.Toast
@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainRecyclerView {
+class MainActivity : AppCompatActivity() {
 
-    override fun onItemClicked(data: String) {
+    private fun showToast(data: String) {
         Toast.makeText(this,data,Toast.LENGTH_LONG).show()
     }
 
@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity(), MainRecyclerView {
         iphoneList.add(IphoneModel("iPhone 7",208))
 
 
-        val adapter = MainRecyclerAdapter(iphoneList,this)
         mainRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
-        mainRecyclerView.adapter = adapter
+        mainRecyclerView.adapter = MainRecyclerAdapter(iphoneList){showToast(it)}
     }
 }

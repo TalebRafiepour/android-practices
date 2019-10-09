@@ -1,4 +1,4 @@
-package com.taleb.interfacedemo
+package com.taleb.practices
 
 import org.junit.Test
 
